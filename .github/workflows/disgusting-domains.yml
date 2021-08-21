@@ -46,6 +46,8 @@ jobs:
           sed -i '/include:/d' output
           sed -i '/#/d' output
           sed -i 's/full://g' output
+          sed -i 's/@cn//g' output
+          sed -i 's/nike/*.nike/g' output
           mkdir publish
           mv output ./publish/list
           

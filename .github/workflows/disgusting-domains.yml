@@ -55,7 +55,7 @@ jobs:
           awk '{print "||" $0}' output | awk '{print $0 "^"}' > rules
           mkdir publish
           mv output ./publish/list
-          mv rules ./public
+          mv rules ./publish
           
       - name: Git push assets to "release" branch
         run: |

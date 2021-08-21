@@ -32,6 +32,8 @@ jobs:
           wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/instagram -O instagram.list
           wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/jd -O jd.list
           wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/nike -O nike.list
+          sed -i '1,3d' nike.list
+          echo *.nike >> nike.list
           wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/sina -O sina.list
           wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/tiktok -O tiktok.list
           wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/twitter -O twitter.list
@@ -47,7 +49,6 @@ jobs:
           sed -i '/#/d' output
           sed -i 's/full://g' output
           sed -i 's/@cn//g' output
-          sed -i 's/nike/*.nike/g' output
           mkdir publish
           mv output ./publish/list
           

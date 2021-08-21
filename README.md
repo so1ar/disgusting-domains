@@ -4,4 +4,6 @@
 
 域名列表https://raw.githubusercontent.com/so1ar/disgusting-domains/release/list
 
+规则列表https://raw.githubusercontent.com/so1ar/disgusting-domains/release/rules
+
 数据来自https://github.com/v2fly/domain-list-community

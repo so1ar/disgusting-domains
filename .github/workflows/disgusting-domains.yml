@@ -41,6 +41,7 @@ jobs:
           wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/umeng -O umeng.list
           wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/youku -O youku.list
           wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/xiaomi -O xiaomi.list
+          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/adidas -O aidas.list
 
       - name: generate list
         run: |

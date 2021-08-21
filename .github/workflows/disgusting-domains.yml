@@ -52,8 +52,10 @@ jobs:
           sed -i 's/full://g' output
           sed -i 's/@cn//g' output
           sed -i '/^\s*$/d' output
+          awk '{print "||" $0}' output | awk '{print $0 "^"}' > rules
           mkdir publish
           mv output ./publish/list
+          mv rules ./public
           
       - name: Git push assets to "release" branch
         run: |

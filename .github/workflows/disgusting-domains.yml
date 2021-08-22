@@ -41,6 +41,7 @@ jobs:
           wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/xiaomi -O xiaomi.list
           wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/adidas -O aidas.list
           wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/kuaishou -O kuaishou.list
+          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/pinduoduo -O pdd.list
 
       - name: generate list
         run: |
@@ -53,7 +54,7 @@ jobs:
           sed -i '/^\s*$/d' output
           awk '{print "||" $0}' output | awk '{print $0 "^"}' > rules
           mkdir publish
-          mv output ./publish/list
+          mv output ./publish/domains
           mv rules ./publish
           
       - name: Git push assets to "release" branch

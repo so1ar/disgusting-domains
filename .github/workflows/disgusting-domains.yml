@@ -44,6 +44,7 @@ jobs:
           wget https://raw.githubusercontent.com/so1ar/disgusting-domains/main/360 -O 360.list
           wget https://raw.githubusercontent.com/so1ar/disgusting-domains/main/bytedance -O bytedance.list
           wget https://raw.githubusercontent.com/so1ar/disgusting-domains/main/kuaishou -O kuaishou.list
+          wget https://raw.githubusercontent.com/so1ar/disgusting-domains/main/yidian -O yidian.list
 
       - name: generate list
         run: |

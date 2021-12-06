@@ -23,7 +23,6 @@ jobs:
         run: |
           wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/facebook -O facebook.list
           wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/iqiyi -O iqyi.list
-          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/bytedance -O bytedance.list
           wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/douyu -O douyu.list
           wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/facebook-dev -O facebook-dev.list
           wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/gigabyte -O gigabyte.list
@@ -40,10 +39,11 @@ jobs:
           wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/youku -O youku.list
           wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/xiaomi -O xiaomi.list
           wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/adidas -O aidas.list
-          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/kuaishou -O kuaishou.list
           wget https://raw.githubusercontent.com/so1ar/disgusting-domains/main/2345 -O 2345.list
           wget https://raw.githubusercontent.com/so1ar/disgusting-domains/main/pdd -O pdd.list
-          wget https://raw.githubusercontent.com/so1ar/disgusting-domains/main/360 -O 260.list
+          wget https://raw.githubusercontent.com/so1ar/disgusting-domains/main/360 -O 360.list
+          wget https://raw.githubusercontent.com/so1ar/disgusting-domains/main/bytedance -O bytedance.list
+          wget https://raw.githubusercontent.com/so1ar/disgusting-domains/main/kuaishou -O kuaishou.list
 
       - name: generate list
         run: |

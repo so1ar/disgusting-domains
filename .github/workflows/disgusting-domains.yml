@@ -46,6 +46,7 @@ jobs:
 
       - name: generate list
         run: |
+          ls -al > files
           cat *.list > output
           sed -i '/include:/d' output
           sed -i '/sinaimg/d' output
@@ -57,6 +58,7 @@ jobs:
           mkdir publish
           mv output ./publish/domains
           mv rules ./publish
+          mv files ./publish
 
       - name: Git push assets to "release" branch
         run: |

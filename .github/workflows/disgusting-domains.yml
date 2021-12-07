@@ -43,10 +43,11 @@ jobs:
           cp domain/data/youku ./youku.list
           cp domain/data/xiaomi ./xiaomi.list
           cp domain/data/adidas ./adidas.list
+          cp domain/data/gigabyte ./gigabyte.list
 
       - name: generate list
         run: |
-          ls -al > files
+          #ls -al > files
           cat *.list > output
           sed -i '/include:/d' output
           sed -i '/sinaimg/d' output
@@ -58,7 +59,7 @@ jobs:
           mkdir publish
           mv output ./publish/domains
           mv rules ./publish
-          mv files ./publish
+          #mv files ./publish
 
       - name: Git push assets to "release" branch
         run: |

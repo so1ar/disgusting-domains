@@ -25,7 +25,7 @@ jobs:
 
       - name: Copy Files
         run: |
-          cp $GITHUB_WORKSPACE/*.list .
+          #cp $GITHUB_WORKSPACE/*.list .
           cp domain/data/facebook ./facebook.list
           cp domain/data/facebook-dev ./facebook-dev.list
           cp domain/data/iqiyi ./iqyi.list

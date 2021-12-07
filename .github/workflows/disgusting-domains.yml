@@ -12,39 +12,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@main
 
       - name: Set variables
         run: |
           echo "RELEASE_NAME=$(date +%Y%m%d)" >> $GITHUB_ENV
         shell: bash
-        
-      - name: Download files
+
+      - name: Clone Repo
         run: |
-          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/facebook -O facebook.list
-          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/iqiyi -O iqyi.list
-          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/douyu -O douyu.list
-          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/facebook-dev -O facebook-dev.list
-          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/gigabyte -O gigabyte.list
-          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/hm -O hm.list
-          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/huya -O huya.list
-          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/instagram -O instagram.list
-          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/jd -O jd.list
-          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/nike -O nike.list
-          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/sina -O sina.list
-          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/tiktok -O tiktok.list
-          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/twitter -O twitter.list
-          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/uc -O uc.list
-          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/umeng -O umeng.list
-          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/youku -O youku.list
-          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/xiaomi -O xiaomi.list
-          wget https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/adidas -O aidas.list
-          wget https://raw.githubusercontent.com/so1ar/disgusting-domains/main/2345 -O 2345.list
-          wget https://raw.githubusercontent.com/so1ar/disgusting-domains/main/pdd -O pdd.list
-          wget https://raw.githubusercontent.com/so1ar/disgusting-domains/main/360 -O 360.list
-          wget https://raw.githubusercontent.com/so1ar/disgusting-domains/main/bytedance -O bytedance.list
-          wget https://raw.githubusercontent.com/so1ar/disgusting-domains/main/kuaishou -O kuaishou.list
-          wget https://raw.githubusercontent.com/so1ar/disgusting-domains/main/yidian -O yidian.list
+          git clone https://github.com/v2fly/domain-list-community.git --depth=1 domain
+
+      - name: Copy Files
+        run: |
+          cp $GITHUB_WORKSPACE/*.list .
+          cp domain/data/facebook ./facebook.list
+          cp domain/data/facebook-dev ./facebook-dev.list
+          cp domain/data/iqiyi ./iqyi.list
+          cp domain/data/douyu ./douyu.list
+          cp domain/data/hm ./hm.list
+          cp domain/data/huya ./huya.list
+          cp domain/data/instgram ./instgram.list
+          cp domain/data/jd ./jd.list
+          cp domain/data/nike ./nike.list
+          cp domain/data/sina ./sina.list
+          cp domain/data/tiktok ./tiktok.list
+          cp domain/data/twitter ./twitter.list
+          cp domain/data/uc ./uc.list
+          cp domain/data/umeng ./umeng.list
+          cp domain/data/youku ./youku.list
+          cp domain/data/xiaomi ./xiaomi.list
+          cp domain/data/adidas ./adidas.list
 
       - name: generate list
         run: |
@@ -59,7 +57,7 @@ jobs:
           mkdir publish
           mv output ./publish/domains
           mv rules ./publish
-          
+
       - name: Git push assets to "release" branch
         run: |
           cd publish || exit 1

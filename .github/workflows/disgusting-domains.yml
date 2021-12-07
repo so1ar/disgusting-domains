@@ -32,7 +32,7 @@ jobs:
           cp domain/data/douyu ./douyu.list
           cp domain/data/hm ./hm.list
           cp domain/data/huya ./huya.list
-          cp domain/data/instgram ./instgram.list
+          cp domain/data/instagram ./instagram.list
           cp domain/data/jd ./jd.list
           cp domain/data/nike ./nike.list
           cp domain/data/sina ./sina.list

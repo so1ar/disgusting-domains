@@ -25,25 +25,29 @@ jobs:
 
       - name: Copy Files
         run: |
+          for file in $(cat files)
+          do
+          cp domain/data/${file} ./${file}.list
+          done
           #cp $GITHUB_WORKSPACE/*.list .
-          cp domain/data/facebook ./facebook.list
-          cp domain/data/facebook-dev ./facebook-dev.list
-          cp domain/data/iqiyi ./iqyi.list
-          cp domain/data/douyu ./douyu.list
-          cp domain/data/hm ./hm.list
-          cp domain/data/huya ./huya.list
-          cp domain/data/instagram ./instagram.list
-          cp domain/data/jd ./jd.list
-          cp domain/data/nike ./nike.list
-          cp domain/data/sina ./sina.list
-          cp domain/data/tiktok ./tiktok.list
-          cp domain/data/twitter ./twitter.list
-          cp domain/data/uc ./uc.list
-          cp domain/data/umeng ./umeng.list
-          cp domain/data/youku ./youku.list
-          cp domain/data/xiaomi ./xiaomi.list
-          cp domain/data/adidas ./adidas.list
-          cp domain/data/gigabyte ./gigabyte.list
+          #cp domain/data/facebook ./facebook.list
+          #cp domain/data/facebook-dev ./facebook-dev.list
+          #cp domain/data/iqiyi ./iqyi.list
+          #cp domain/data/douyu ./douyu.list
+          #cp domain/data/hm ./hm.list
+          #cp domain/data/huya ./huya.list
+          #cp domain/data/instagram ./instagram.list
+          #cp domain/data/jd ./jd.list
+          #cp domain/data/nike ./nike.list
+          #cp domain/data/sina ./sina.list
+          #cp domain/data/tiktok ./tiktok.list
+          #cp domain/data/twitter ./twitter.list
+          #cp domain/data/uc ./uc.list
+          #cp domain/data/umeng ./umeng.list
+          #cp domain/data/youku ./youku.list
+          #cp domain/data/xiaomi ./xiaomi.list
+          #cp domain/data/adidas ./adidas.list
+          #cp domain/data/gigabyte ./gigabyte.list
 
       - name: generate list
         run: |

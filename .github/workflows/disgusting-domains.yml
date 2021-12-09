@@ -23,26 +23,42 @@ jobs:
         run: |
           git clone https://github.com/v2fly/domain-list-community.git --depth=1 domain
 
-      - name: Copy Files
+      - name: Generate List
         run: |
           for file in $(cat files)
           do
-          cp domain/data/${file} ./${file}.list
+          cp domain/data/${file} ./${file}.tmp
+          sed -i '/include:/d' ${file}.tmp
+          sed -i '/sinaimg/d' ${file}.tmp
+          sed -i '/#/d' ${file}.tmp
+          sed -i 's/full://g' ${file}.tmp
+          sed -i 's/@cn//g' ${file}.tmp
+          sed -i '/^\s*$/d' ${file}.tmp
+          awk '{print "||" $0}' ${file}.tmp | awk '{print $0 "^"}' > ${file}.list
+          sed -i '1i\# https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/${file}' ${file}.list
           done
-
-      - name: generate list
-        run: |
-          cat *.list > output
-          sed -i '/include:/d' output
-          sed -i '/sinaimg/d' output
-          sed -i '/#/d' output
-          sed -i 's/full://g' output
-          sed -i 's/@cn//g' output
-          sed -i '/^\s*$/d' output
-          awk '{print "||" $0}' output | awk '{print $0 "^"}' > rules
+          cat *.list > rules
           mkdir publish
-          mv output ./publish/domains
-          mv rules ./publish
+          cp rules ./publish
+          sed -i '/#/d' rules
+          sed -i '/^\s*$/d' rules
+          sed -i 's/..//' rules
+          sed -i 's/.$//' rules
+          cp rules .publish/domains
+
+          #      - name: generate list
+          #        run: |
+          #          cat *.list > output
+          #          sed -i '/include:/d' output
+          #          sed -i '/sinaimg/d' output
+          #          sed -i '/#/d' output
+          #          sed -i 's/full://g' output
+          #          sed -i 's/@cn//g' output
+          #          sed -i '/^\s*$/d' output
+          #          awk '{print "||" $0}' output | awk '{print $0 "^"}' > rules
+          #          mkdir publish
+          #          mv output ./publish/domains
+          #          mv rules ./publish
 
       - name: Git push assets to "release" branch
         run: |

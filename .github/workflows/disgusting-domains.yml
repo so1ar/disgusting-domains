@@ -36,6 +36,7 @@ jobs:
           sed -i '/^\s*$/d' ${file}.tmp
           awk '{print "||" $0}' ${file}.tmp | awk '{print $0 "^"}' > ${file}.list
           sed -i '1i\# https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/${file}' ${file}.list
+          sed -i '1{x;p;x;}' ${file}.list
           done
           cat *.list > rules
           mkdir publish
@@ -45,20 +46,6 @@ jobs:
           sed -i 's/..//' rules
           sed -i 's/.$//' rules
           cp rules ./publish/domains
-
-          #      - name: generate list
-          #        run: |
-          #          cat *.list > output
-          #          sed -i '/include:/d' output
-          #          sed -i '/sinaimg/d' output
-          #          sed -i '/#/d' output
-          #          sed -i 's/full://g' output
-          #          sed -i 's/@cn//g' output
-          #          sed -i '/^\s*$/d' output
-          #          awk '{print "||" $0}' output | awk '{print $0 "^"}' > rules
-          #          mkdir publish
-          #          mv output ./publish/domains
-          #          mv rules ./publish
 
       - name: Git push assets to "release" branch
         run: |

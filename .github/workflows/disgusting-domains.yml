@@ -39,6 +39,7 @@ jobs:
           sed -i '1{x;p;x;}' ${file}.list
           done
           cat *.list > rules
+          sed -i '1i\release version: '${{ env.RELEASE_NAME }} rules
           mkdir publish
           cp rules ./publish
           sed -i '/#/d' rules

@@ -35,7 +35,7 @@ jobs:
           sed -i 's/@cn//g' ${file}.tmp
           sed -i '/^\s*$/d' ${file}.tmp
           awk '{print "||" $0}' ${file}.tmp | awk '{print $0 "^"}' > ${file}.list
-          sed -i '1i\# https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/${file}' ${file}.list
+          sed -i '1i\# https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/'${file} ${file}.list
           sed -i '1{x;p;x;}' ${file}.list
           done
           cat *.list > rules

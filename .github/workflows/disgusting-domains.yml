@@ -44,7 +44,7 @@ jobs:
           sed -i '/^\s*$/d' rules
           sed -i 's/..//' rules
           sed -i 's/.$//' rules
-          cp rules .publish/domains
+          cp rules ./publish/domains
 
           #      - name: generate list
           #        run: |

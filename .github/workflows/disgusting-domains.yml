@@ -47,6 +47,8 @@ jobs:
           sed -i 's/..//' rules
           sed -i 's/.$//' rules
           cp rules ./publish/domains
+          cd publish
+          awk '{print "||" $0}' domains | awk '{print $0 "^$ctag=user_admin"}' > rules-personal
 
       - name: Git push assets to "release" branch
         run: |
